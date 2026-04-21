@@ -83,21 +83,9 @@ if not df.empty:
         st.dataframe(df.sort_values(by='date', ascending=False), use_container_width=True)
 
     st.divider()
-    if st.button("🗑️ Effacer toutes les données"):
-        c.execute("DELETE FROM releves")
-        conn.commit()
-        st.rerun()
-        st.subheader("🛠️ Gestion des erreurs")
+st.subheader("🛠️ Gestion des erreurs")
 if not df.empty:
     # Créer une liste d'IDs pour choisir quoi supprimer
     id_a_supprimer = st.selectbox("Sélectionner l'ID du trajet à corriger :", df.index)
-    
-    if st.button("❌ Supprimer cette ligne"):
-        # On récupère l'ID réel depuis le DataFrame
-        real_id = int(df.iloc[id_a_supprimer].name) 
-        # Note : Si tu n'as pas l'ID SQL, on peut supprimer par index
-        c.execute("DELETE FROM releves WHERE id = (SELECT id FROM releves LIMIT 1 OFFSET ?)", (id_a_supprimer,))
-        conn.commit()
-        st.success("Ligne supprimée ! Vous pouvez maintenant saisir la correction.")
-        st.rerun()
+
 conn.close()
