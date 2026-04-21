@@ -1,2 +1,2 @@
 # Projet-INF232-Taxi
-Application de collecte de donnees des transports dans la zone urbaine de ynde 
+Ce projet est un TP d'informatique (INF232) réalisé à l'Université de Yaoundé 1. Il permet d'analyser les tarifs de taxi à Yaoundé.
